@@ -1,6 +1,6 @@
 {
   "name": "apkup",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Publish APKs to Google Play Store",
   "main": "dist/index.js",
   "bin": {
