@@ -1,6 +1,5 @@
 import ApkReader from 'adbkit-apkreader'
 import Debug from 'debug'
-import { readManifest as readAabManifest } from 'node-aab-parser'
 import { extname, resolve } from 'path'
 
 const debug = Debug('apkup:helpers')
@@ -34,15 +33,8 @@ export const parseManifest = async (
       packageName: manifestResponse.package,
       versionCode: manifestResponse.versionCode
     }
-  } else if (ext === '.aab') {
-    const manifestResponse = await readAabManifest(apkFile)
-
-    manifest = {
-      packageName: manifestResponse.packageName,
-      versionCode: manifestResponse.versionCode
-    }
   } else {
-    throw new Error('The file must be an APK or AAB.')
+    throw new Error('The file must be an APK.')
   }
 
   debug(`> Detected package name ${manifest.packageName}`)
